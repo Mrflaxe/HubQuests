@@ -1,0 +1,23 @@
+main: ru.mrflaxe.hubquests.HubQuests
+name: ${project.name}
+author: mrflaxe
+version: ${project.version}
+api-version: 1.15
+softdepend: [SKLibrary, ProtocolLib, PEconomy]
+
+commands:
+  quest:
+    aliases: [q]
+    description: none
+    usage: /quest 
+
+permissions:
+  hubquests.command.quest:
+    description: allow to get quests
+    default: true
+  hubquests.command.quest.customizer:
+    description: gives a customizer item
+    default: op
+  hubquests.command.quest.refresh:
+    description: allow to refresh plugin configurations
+    default: op 

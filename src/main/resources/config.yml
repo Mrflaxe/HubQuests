@@ -1,0 +1,120 @@
+database:
+  # The type of used database
+  # Supported types: [mysql, sqlite, postgresql]
+  type: sqlite
+
+  # MySQL connection configuration
+  mysql:
+    host: localhost
+    port: 3306
+    name: hubquests
+    user: admin
+    password: hubquests
+    params:
+    - 'autoReconnect=true'
+    - 'useSSL=false'
+
+  # PostgreSQL connection configuration
+  postgresql:
+    host: localhost
+    port: 5432
+    name: hubquests
+    user: admin
+    password: hubquests
+    params:
+    - 'autoReconnect=true'
+    - 'useSSL=false'
+
+  # SQLite connection configuration
+  sqlite:
+    file: database.db
+
+
+
+# Далее: секретики - объекты, которые будут прятать в хабе.
+
+
+# ID валюты, в которой выдётся награда
+currency: 'hub'
+
+# блок, которым будут отображаться секретики. По умолчанию блок золота
+secret:
+  maaterial: "GOLD_BLOCK"
+
+# Тут можно указать, когда можно считать, что игрок не успел собрать все секреты до конца дня
+# и обнулить его серию выполненных квестов.
+# Указывается просто количество часов, прошедших с полуночи, пример:
+# Значение 3 обнулит все сессии в 3 часа ночи. Значение 12 обнулит в 12 дня.
+sessions-nullify-time: 3
+
+# Звуковые эффекты
+sounds:
+  # Принятие квеста
+  quest-accept: "BLOCK_BEACON_POWER_SELECT"
+  # Квест провален
+  quest-failed: "BLOCK_BEACON_DEACTIVATE"
+  # Собран один секрет
+  secret-collect: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  # Выполнение квеста
+  secret-collect-all: "ENTITY_PLAYER_LEVELUP"
+
+# Конфигурация заданий.
+#
+# day_# - порядковые номера заданий.
+# reward - Количество игровой валюты, которую игрок получит за выполнение этого задания
+# to-find - секция имеет три подсекции - сложности. Тут устанавливается количество секретов,
+# которые игроку понадобиться собрать, что бы завершить квест и получить награду, для каждой сложности.
+#
+# Если рассматривать шаблон day_4, то что бы его выполнить, необходимо найти 2 секрета лёгкого уровня и 2 секрета среднего,
+# при этом ни одного секрета сложного уровня. За его выполнение игрок получит 40 единиц игровой валюты.
+#
+quests:
+  day_1:
+    reward: 5
+    to-find:
+      easy: 1
+      medium: 0
+      hard: 0
+
+  day_2:
+    reward: 10
+    to-find:
+      easy: 2
+      medium: 0
+      hard: 0
+
+  day_3:
+    reward: 20
+    to-find:
+      easy: 2
+      medium: 1
+      hard: 0
+
+  day_4:
+    reward: 30
+    to-find:
+      easy: 2
+      medium: 2
+      hard: 0
+
+  day_5:
+    reward: 50
+    to-find:
+      easy: 3
+      medium: 2
+      hard: 0
+
+  day_6:
+    reward: 75
+    to-find:
+      easy: 3
+      medium: 2
+      hard: 1
+
+  day_7:
+    reward: 100
+    to-find:
+      easy: 3
+      medium: 2
+      hard: 2
+
